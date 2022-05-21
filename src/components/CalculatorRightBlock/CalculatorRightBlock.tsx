@@ -6,12 +6,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CalculatorRight } from 'styles';
 
 const CalculatorRightBlock = () => {
-  const dispatch = useDispatch()
-  const { billAmount, numberOfGuests, tipPercentage, customTipPercentage } =
-    useSelector((state: AppState) => state.mainReducer);
+  const dispatch = useDispatch();
+  const { billAmount, numberOfGuests, tipPercentage, customTipPercentage } = useSelector(
+    (state: AppState) => state.mainReducer,
+  );
 
   const resetState = useCallback(() => {
-    dispatch(setRestAllValue())
+    dispatch(setRestAllValue());
   }, [dispatch]);
 
   return (

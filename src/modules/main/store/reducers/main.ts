@@ -28,11 +28,11 @@ const main = createSlice({
       state.tipPercentage = 0;
     },
     setRestAllValue: (state) => {
-        state.customTipPercentage = 0;
-        state.billAmount = 0;
-        state.tipPercentage = 0;
-        state.numberOfGuests = 0;
-    }
+      state.customTipPercentage = 0;
+      state.billAmount = 0;
+      state.tipPercentage = 0;
+      state.numberOfGuests = 0;
+    },
   },
 });
 
@@ -41,7 +41,7 @@ export const {
   setNumberOfGuests,
   setTipPercentage,
   setCustomTipPercentage,
-  setRestAllValue
+  setRestAllValue,
 } = main.actions;
 
 export const mainReducer = main.reducer;
