@@ -21,23 +21,17 @@ const Tip = (props: ITip) => {
     }
   };
 
-  // reset tip on custom input focus
-  const handleFocus = () => {};
+  const isActive = props.tip === props.tipPercentage ? 'active' : '';
 
-  // render this giant snake of a code
   return props.custom ? (
     <StyledInput
       type={props.type}
       value={props.value}
-      onFocus={handleFocus}
       onChange={handleChange}
       placeholder={props.placeholder}
     />
   ) : (
-    <StyledTip
-      className={`${props.tip === props.tipPercentage ? 'active' : ''}`}
-      onClick={handleClick}
-    >
+    <StyledTip className={isActive} onClick={handleClick}>
       {props.tip}%
     </StyledTip>
   );

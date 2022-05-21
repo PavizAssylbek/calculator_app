@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { InputI } from './model';
-import { StyledInput, StyledLabel } from './styled';
+import { InputErrorText, StyledInput, StyledLabel } from './styled';
 
 const Input = (props: InputI) => {
   const [error, setError] = useState('');
@@ -39,11 +39,14 @@ const Input = (props: InputI) => {
     } else return;
   };
 
+  const isBorderColor =
+    error.length > 0 ? 'var(--color-red)' : 'var(--color-very-light-grayish-cyan)';
+
   return (
     <>
       <StyledLabel htmlFor={props.id}>
         <span>{props.label}</span>
-        {error.length > 0 && <span className="input__error__message">{error}</span>}
+        {error.length > 0 && <InputErrorText>{error}</InputErrorText>}
       </StyledLabel>
       <StyledInput
         id={props.id}
@@ -52,7 +55,7 @@ const Input = (props: InputI) => {
         bg={props.icon}
         value={props.value}
         placeholder={props.placeholder}
-        borderColor={error.length > 0 ? '#E17052 !important' : '#F3F9FA'}
+        borderColor={isBorderColor}
         onBlur={handleBlur}
         onChange={handleChange}
       />

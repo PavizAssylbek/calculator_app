@@ -5,33 +5,44 @@ export const StyledInput = styled.input<{
   borderColor?: string;
 }>`
   width: 100%;
-  height: 48px;
-  border-radius: 5px;
+  height: var(--size-48);
+  border-radius: var(--size-4);
   border: none;
-  background: url(${(props) => props.bg}) no-repeat 17px center #f3f9fa;
-  background-size: 13px;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 36px;
+  background: url(${(props) => props.bg}) no-repeat var(--size-16) center
+    var(--color-very-light-grayish-cyan);
+  background-size: var(--size-12);
+  font-weight: var(--font-weight-600);
+  font-size: var(--default-size);
   text-align: right;
-  color: #00474b;
-  padding-right: 17px;
-  border: 2px solid ${(props) => props.borderColor};
+  color: var(--color-very-dark);
+  padding-right: var(--size-16);
+  border: var(--size-2) solid ${(props) => props.borderColor};
   transition: border 150ms ease-in;
   &:focus {
-    border: 2px solid #26c2ae;
+    border: var(--size-2) solid var(--color-mb-blue);
+    outline: 0 none;
+  }
+  &:hover {
+    border: var(--size-2) solid var(--color-mb-blue);
     outline: 0 none;
   }
 `;
+
 export const StyledLabel = styled.label`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 24px;
-  color: #5e7a7d;
+  margin-bottom: var(--size-8);
+  font-weight: var(--font-weight-600);
+  font-size: var(--size-16);
+  line-height: var(--default-size);
+  color: var(--color-dark-grayish);
+`;
+
+export const InputErrorText = styled.span`
+  font-weight: var(--font-weight-600);
+  font-size: var(--size-16);
+  line-height: var(--default-size);
+  text-align: right;
+  color: var(--color-red);
 `;
