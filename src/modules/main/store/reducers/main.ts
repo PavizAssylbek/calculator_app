@@ -2,36 +2,36 @@ import { createSlice } from '@reduxjs/toolkit';
 import { initialStateI } from 'modules/main/models';
 
 const initialState: initialStateI = {
-  billAmount: 0,
-  numberOfGuests: 0,
-  tipPercentage: 0,
-  customTipPercentage: 0,
-  listTips: [5, 10, 15, 25, 50],
+  billAmount: '0',
+  numberOfGuests: '0',
+  tipPercentage: '0',
+  customTipPercentage: '0',
+  listTips: ['5', '10', '15', '25', '50'],
 };
 
 const main = createSlice({
   name: 'main',
   initialState,
   reducers: {
-    setBillAmount: (state, { payload }: { payload: number }) => {
+    setBillAmount: (state, { payload }: { payload: string }) => {
       state.billAmount = payload;
     },
-    setNumberOfGuests: (state, { payload }: { payload: number }) => {
+    setNumberOfGuests: (state, { payload }: { payload: string }) => {
       state.numberOfGuests = payload;
     },
-    setTipPercentage: (state, { payload }: { payload: number }) => {
+    setTipPercentage: (state, { payload }: { payload: string }) => {
       state.tipPercentage = payload;
-      state.customTipPercentage = 0;
+      state.customTipPercentage = '0';
     },
-    setCustomTipPercentage: (state, { payload }: { payload: number }) => {
+    setCustomTipPercentage: (state, { payload }: { payload: string }) => {
       state.customTipPercentage = payload;
-      state.tipPercentage = 0;
+      state.tipPercentage = '0';
     },
     setRestAllValue: (state) => {
-      state.customTipPercentage = 0;
-      state.billAmount = 0;
-      state.tipPercentage = 0;
-      state.numberOfGuests = 0;
+      state.customTipPercentage = '0';
+      state.billAmount = '0';
+      state.tipPercentage = '0';
+      state.numberOfGuests = '0';
     },
   },
 });

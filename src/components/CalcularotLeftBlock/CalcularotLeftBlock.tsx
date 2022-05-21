@@ -19,28 +19,28 @@ const CalcularotLeftBlock = () => {
     useSelector((state: AppState) => state.mainReducer);
 
   const handleChangeSetBillAmount = useCallback(
-    (value: number) => {
+    (value: string) => {
       dispatch(setBillAmount(value));
     },
     [dispatch],
   );
 
   const handleChangeSetNumberOfGuests = useCallback(
-    (value: number) => {
+    (value: string) => {
       dispatch(setNumberOfGuests(value));
     },
     [dispatch],
   );
 
   const handleChangeSetTipPercentage = useCallback(
-    (value: number) => {
+    (value: string) => {
       dispatch(setTipPercentage(value));
     },
     [dispatch],
   );
 
   const handleChangeSetCustomTipPercentage = useCallback(
-    (value: number) => {
+    (value: string) => {
       dispatch(setCustomTipPercentage(value));
     },
     [dispatch],

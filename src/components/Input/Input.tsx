@@ -12,7 +12,7 @@ const Input = (props: InputI) => {
     if (!isNaN(inputValue)) {
       props.updatePropsValue(inputValue.toFixed(props.decimals));
     } else {
-      props.updatePropsValue(0);
+      props.updatePropsValue('0');
     }
 
     validateInput();
@@ -24,13 +24,13 @@ const Input = (props: InputI) => {
     if (!isNaN(inputValue)) {
       props.updatePropsValue(inputValue);
     } else {
-      props.updatePropsValue(0);
+      props.updatePropsValue('0');
     }
   };
 
   const validateInput = () => {
     if (props.validate) {
-      if (props.value <= 0) {
+      if (props.value <= '0') {
         console.log('passed');
         setError("Can't be zero");
       } else {

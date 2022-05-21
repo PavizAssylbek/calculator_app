@@ -1,9 +1,9 @@
 export interface ITip {
-  tipPercentage?: number;
-  currentPrecent?: number;
+  tipPercentage?: string;
+  currentPrecent?: string;
   custom?: boolean;
   type?: string;
-  value?: number | string;
+  value?: string;
   placeholder?: string;
-  handleChangeProps: (value: number) => void;
+  handleChangeProps: (value: string) => void;
 }
