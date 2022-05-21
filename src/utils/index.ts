@@ -1,13 +1,13 @@
 import { createGlobalStyle, css } from 'styled-components';
 
-export const calcTipPerPerson = (billAmount = 0, guestNumber = 0, tipPercentage = 0) => {
+export const calcTipPerPerson = (billAmount: number, guestNumber: number, tipPercentage: number) => {
   return ((billAmount * (tipPercentage / 100)) / guestNumber).toFixed(2);
 };
 
 export const calcTotalPerPerson = (
-  billAmount = 0,
-  guestNumber = 0,
-  tipPercentage = 0,
+  billAmount: number,
+  guestNumber: number,
+  tipPercentage: number,
 ) => {
   return (
     billAmount / guestNumber +
