@@ -2,21 +2,62 @@ import IconDollar from 'assets/images/icon-dollar.svg';
 import IconPerson from 'assets/images/icon-person.svg';
 import { Input } from 'components/Input';
 import { Tip } from 'components/Tip';
-import React, { useState } from 'react';
+import { AppState } from 'modules/main/store';
+import {
+  setBillAmount,
+  setCustomTipPercentage,
+  setNumberOfGuests,
+  setTipPercentage,
+} from 'modules/main/store/reducers/main';
+import React, { useCallback, useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { CalculatorLeft, StyledTipContainer } from 'styles';
 
 const CalcularotLeftBlock = () => {
-  const [billAmount, setBillAmount] = useState(0);
-  const [tipPercentage, setTipPercentage] = useState(0);
-  const [numberOfGuests, setNumberOfGuests] = useState(0);
-  const tips = [5, 10, 15, 25, 50].map((tip) => (
-    <Tip
-      key={tip}
-      tip={tip}
-      tipPercentage={tipPercentage}
-      handleChangeProps={setTipPercentage}
-    />
-  ));
+  const dispatch = useDispatch();
+  const { billAmount, numberOfGuests, listTips, tipPercentage, customTipPercentage } =
+    useSelector((state: AppState) => state.mainReducer);
+
+  const handleChangeSetBillAmount = useCallback(
+    (value: number) => {
+      dispatch(setBillAmount(value));
+    },
+    [dispatch],
+  );
+
+  const handleChangeSetNumberOfGuests = useCallback(
+    (value: number) => {
+      dispatch(setNumberOfGuests(value));
+    },
+    [dispatch],
+  );
+
+  const handleChangeSetTipPercentage = useCallback(
+    (value: number) => {
+      dispatch(setTipPercentage(value));
+    },
+    [dispatch],
+  );
+
+  const handleChangeSetCustomTipPercentage = useCallback(
+    (value: number) => {
+      dispatch(setCustomTipPercentage(value));
+    },
+    [dispatch],
+  );
+
+  const mutatedTips = useMemo(
+    () =>
+      listTips.map((tip) => (
+        <Tip
+          key={tip}
+          currentPrecent={tip}
+          tipPercentage={tipPercentage}
+          handleChangeProps={handleChangeSetTipPercentage}
+        />
+      )),
+    [listTips, tipPercentage, customTipPercentage],
+  );
 
   return (
     <CalculatorLeft>
@@ -29,17 +70,16 @@ const CalcularotLeftBlock = () => {
         decimals={2}
         placeholder="0"
         value={billAmount}
-        updatePropsValue={setBillAmount}
+        updatePropsValue={handleChangeSetBillAmount}
       />
       <StyledTipContainer>
         <h3>Select Tip %</h3>
         <div className="tips">
-          {tips}
+          {mutatedTips}
           <Tip
             type={'number'}
-            value={tipPercentage}
-            tipPercentage={tipPercentage}
-            handleChangeProps={setTipPercentage}
+            value={customTipPercentage}
+            handleChangeProps={handleChangeSetCustomTipPercentage}
             placeholder="Custom"
             custom
           />
@@ -54,7 +94,7 @@ const CalcularotLeftBlock = () => {
         placeholder="0"
         decimals={0}
         value={numberOfGuests}
-        updatePropsValue={setNumberOfGuests}
+        updatePropsValue={handleChangeSetNumberOfGuests}
         validate
       />
     </CalculatorLeft>

@@ -1,6 +1,6 @@
 export interface ITip {
-  tipPercentage: number;
-  tip?: number;
+  tipPercentage?: number;
+  currentPrecent?: number;
   custom?: boolean;
   type?: string;
   value?: number | string;

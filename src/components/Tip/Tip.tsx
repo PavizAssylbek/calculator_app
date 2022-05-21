@@ -5,10 +5,10 @@ import { StyledInput, StyledTip } from './styled';
 
 const Tip = (props: ITip) => {
   const handleClick = () => {
-    if (props.tipPercentage === props.tip) {
+    if (props.tipPercentage === props.currentPrecent) {
       return props.handleChangeProps(0);
     }
-    props.handleChangeProps(props.tip || 0);
+    props.handleChangeProps(props.currentPrecent || 0);
   };
 
   const handleChange = (e: any) => {
@@ -21,7 +21,7 @@ const Tip = (props: ITip) => {
     }
   };
 
-  const isActive = props.tip === props.tipPercentage ? 'active' : '';
+  const isActive = props.currentPrecent === props.tipPercentage ? 'active' : '';
 
   return props.custom ? (
     <StyledInput
@@ -32,7 +32,7 @@ const Tip = (props: ITip) => {
     />
   ) : (
     <StyledTip className={isActive} onClick={handleClick}>
-      {props.tip}%
+      {props.currentPrecent}%
     </StyledTip>
   );
 };

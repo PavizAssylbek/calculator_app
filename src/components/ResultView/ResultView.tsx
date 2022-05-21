@@ -13,8 +13,8 @@ import {
 } from './styled';
 
 const ResultView = (props: IResultView) => {
-  const [tipAmount, setTipAmount] = useState(0);
-  const [totalAmount, setTotalAmount] = useState(0);
+  const [tipAmount, setTipAmount] = useState<number>(0);
+  const [totalAmount, setTotalAmount] = useState<number>(0);
 
   useEffect(() => {
     if (!props.billAmount || !props.numberOfGuests || !Number(props.numberOfGuests > 0)) {
@@ -54,7 +54,7 @@ const ResultView = (props: IResultView) => {
         </TipInfo>
         <TipResultText>{totalPersonResult}</TipResultText>
       </TipContent>
-      <TipResetButton onClick={() => props.reset()} isDisabled={!haveData}>
+      <TipResetButton onClick={props.reset} isDisabled={!haveData}>
         Reset
       </TipResetButton>
     </StyledResultScreen>
