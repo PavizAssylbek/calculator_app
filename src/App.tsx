@@ -1,5 +1,6 @@
 import { SplitterIcon } from 'components/icons';
 import { Input } from 'components/Input';
+import { ResultView } from 'components/ResultView';
 import { Tip } from 'components/Tip';
 import React, { useState } from 'react';
 import {
@@ -12,12 +13,20 @@ import {
   WrapperDiv,
 } from 'styles';
 
-import IconDollar from '../images/icon-dollar.svg';
-import IconPerson from '../images/icon-person.svg';
+import IconDollar from './assets/images/icon-dollar.svg';
+import IconPerson from './assets/images/icon-person.svg';
 
 function App() {
+  const [billAmount, setBillAmount] = useState(0);
   const [tipPercentage, setTipPercentage] = useState(0);
   const [numberOfGuests, setNumberOfGuests] = useState(0);
+
+  const resetState = () => {
+    setBillAmount(0);
+    setTipPercentage(0);
+    setNumberOfGuests(0);
+  };
+
   const tips = [5, 10, 15, 25, 50].map((tip) => (
     <Tip
       key={tip}
@@ -44,10 +53,8 @@ function App() {
               label="Bill"
               decimals={2}
               placeholder="0"
-              value={0}
-              updatePropsValue={(number) => {
-                console.log(number);
-              }}
+              value={billAmount}
+              updatePropsValue={setBillAmount}
             />
             <StyledTipContainer>
               <h3>Select Tip %</h3>
@@ -79,7 +86,14 @@ function App() {
             />
           </CalculatorLeft>
 
-          <CalculatorRight></CalculatorRight>
+          <CalculatorRight>
+            <ResultView
+              billAmount={billAmount}
+              numberOfGuests={numberOfGuests}
+              tipPercentage={tipPercentage}
+              reset={resetState}
+            />
+          </CalculatorRight>
         </CalculatorWrapper>
       </WrapperDiv>
     </ContainerDiv>
