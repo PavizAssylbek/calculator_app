@@ -44,7 +44,6 @@
 
 Icons are stored as react components in `/components/icons`
 
-
 ## Components
 
 Components are stored in `/components`
@@ -69,17 +68,16 @@ Styles are stored as react function in `/utils/index.ts`
 - named `export const GlobalStyles`
 
 ## Module Structure
-* styles/{pageName}.ts - Page styles
 
+- styles/{pageName}.ts - Page styles
 
 where is the stor? where to store data?
 
-* /modules/{page-name}/store
-* /modules/{page-name}/store/reducers - reducers
-* /modules/{page-name}/store/sagas - saga
+- /modules/{page-name}/store
+- /modules/{page-name}/store/reducers - reducers
+- /modules/{page-name}/store/sagas - saga
 
 ```
 --font-weight-400: 400;
 --gap-m: 16px;
 ```
-
