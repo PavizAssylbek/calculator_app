@@ -6,9 +6,9 @@ import { StyledInput, StyledTip } from './styled';
 const Tip = (props: ITip) => {
   const handleClick = () => {
     if (props.tipPercentage === props.currentPrecent) {
-      return props.handleChangeProps('0');
+      return props.handleChangeProps(0);
     }
-    props.handleChangeProps(props.currentPrecent || '0');
+    props.handleChangeProps(props.currentPrecent || 0);
   };
 
   const handleChange = (e: any) => {
@@ -17,7 +17,7 @@ const Tip = (props: ITip) => {
     if (!isNaN(inputValue)) {
       props.handleChangeProps(inputValue);
     } else {
-      props.handleChangeProps('0');
+      props.handleChangeProps(0);
     }
   };
 

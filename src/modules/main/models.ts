@@ -1,7 +1,7 @@
 export interface initialStateI {
-  billAmount: string;
-  numberOfGuests: string;
-  tipPercentage: string;
-  customTipPercentage: string;
-  listTips: string[];
+  billAmount: number;
+  numberOfGuests: number;
+  tipPercentage: number;
+  customTipPercentage: number;
+  listTips: number[];
 }

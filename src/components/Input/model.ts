@@ -4,9 +4,9 @@ export interface InputI {
   icon: string;
   type: string;
   label: string;
-  value: string;
+  value: string | number;
   decimals: number;
   placeholder: string;
   validate?: boolean;
-  updatePropsValue: (value: string) => void;
+  updatePropsValue: (value: number) => void;
 }
